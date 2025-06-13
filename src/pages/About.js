@@ -18,22 +18,22 @@ const About = () => {
       description: 'Expanded client base working with startups and established companies on branding and digital design.',
     },
     {
-      year: '2020',
-      title: 'Graphic Designer',
-      company: 'Design Agency',
-      description: 'Developed comprehensive brand identities and marketing materials for diverse client portfolio.',
+      year: '2025',
+      title: 'Full Stack Developer Student',
+      company: 'Developers Institute TLV',
+      description: 'Learning full stack development with a focus on JavaScript, React, Node.js, and MongoDB.',
     },
     {
-      year: '2018',
-      title: 'Junior Designer',
-      company: 'Tech Startup',
-      description: 'Started career focusing on UI/UX design and digital marketing materials.',
+      year: '2023',
+      title: 'Level A Ordnance Fighter Jet Technician',
+      company: 'Israel Air Force',
+      description: 'Specializing in maintenance, diagnostics, and safety checks on F-16i fighter jet weapon systems.',
     },
     {
-      year: '2017',
+      year: '2022',
       title: 'Graduated',
-      company: 'Bezalel Academy',
-      description: 'Bachelor of Fine Arts in Visual Communication Design with honors.',
+      company: 'Vanier College',
+      description: 'DEC in Social Sciences with Mathematic.'
     },
   ];
 
