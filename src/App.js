@@ -51,7 +51,7 @@ function App() {
         <footer className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-30">
           <div className="glass-card px-6 py-3 rounded-2xl">
             <p className="text-white/60 text-sm font-medium">
-              © 2024 Ilan Uzan. All rights reserved.
+              © 2025 Ilan Uzan. All rights reserved.
             </p>
           </div>
         </footer>

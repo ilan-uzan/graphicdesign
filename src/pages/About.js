@@ -1,40 +1,53 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Palette } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 import profileImage from '../assets/images/profile.jpg';
 
 const About = () => {
+  const [isHovering, setIsHovering] = useState(false);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      setCursorPosition({ x, y });
+    }
+  };
+
   const timeline = [
     {
-      year: '2024',
-      title: 'Senior Graphic Designer',
-      company: 'Creative Studio',
-      description: 'Leading visual design projects for international brands, focusing on digital experiences and brand identity.',
+      year: '2025-Now',
+      title: 'Startup Founder',
+      company: 'Kesef Plus',
+      description: 'Leading the development of Kesef Plus, a financial technology startup that combines AI, Web3, and modern personal finance tools.',
     },
     {
-      year: '2022',
-      title: 'Freelance Designer',
-      company: 'Independent',
-      description: 'Expanded client base working with startups and established companies on branding and digital design.',
-    },
-    {
-      year: '2025',
+      year: '2025-Now',
       title: 'Full Stack Developer Student',
       company: 'Developers Institute TLV',
       description: 'Learning full stack development with a focus on JavaScript, React, Node.js, and MongoDB.',
     },
     {
-      year: '2023',
+      year: '2023-2025',
       title: 'Level A Ordnance Fighter Jet Technician',
       company: 'Israel Air Force',
       description: 'Specializing in maintenance, diagnostics, and safety checks on F-16i fighter jet weapon systems.',
     },
     {
-      year: '2022',
+      year: '2019-2022',
       title: 'Graduated',
       company: 'Vanier College',
       description: 'DEC in Social Sciences with Mathematic.'
+    },
+    {
+      year: '2019-2025',
+      title: 'Dropshipping Entrepreneur',
+      company: 'Shopify',
+      description: 'Started dropshipping on Shopify and grew to 6 figures in revenue through SEO and social media marketing.',
     },
   ];
 
@@ -88,65 +101,92 @@ const About = () => {
 
         {/* Personal Story */}
         <motion.div variants={itemVariants} className="mb-16 lg:mb-20">
-          <GlassCard className="card-spacing rounded-3xl liquid-glass" hover={false}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
-              <div>
-                <h2 className="text-2xl lg:text-3xl font-bold text-clean mb-4 lg:mb-6 tracking-tight">
-                  My Journey
-                </h2>
-                <div className="space-y-4 lg:space-y-5 text-white/75 leading-relaxed text-sm lg:text-base">
-                  <p>
-                    Born and raised in Israel, I discovered my passion for design during my military service, 
-                    where I first explored the power of visual communication in connecting with diverse audiences.
-                  </p>
-                  <p>
-                    After completing my service, I pursued my Bachelor of Fine Arts at the prestigious 
-                    Bezalel Academy of Arts and Design in Jerusalem, where I honed my skills in visual 
-                    communication and developed a deep appreciation for the intersection of art and technology.
-                  </p>
-                  <p>
-                    Today, I combine traditional design principles with cutting-edge digital techniques 
-                    to create compelling visual narratives that resonate with global audiences.
-                  </p>
-                </div>
-              </div>
-              <div className="relative">
-                <motion.div 
-                  className="aspect-square bg-gradient-to-br from-accent-primary/15 via-accent-secondary/10 to-accent-tertiary/15 rounded-3xl overflow-hidden relative"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* Profile Image */}
-                  <div className="w-full h-full relative">
-                    <img 
-                      src={profileImage} 
-                      alt="Ilan Uzan - Graphic Designer"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        // Hide image and show fallback
-                        e.target.style.display = 'none';
-                        const fallback = e.target.parentElement.querySelector('.fallback-content');
-                        if (fallback) fallback.style.display = 'flex';
-                      }}
-                    />
-                    {/* Fallback content */}
-                    <div className="fallback-content absolute inset-0 flex items-center justify-center text-white/60 text-center" style={{display: 'none'}}>
-                      <div>
-                        <div className="mb-4 p-6 rounded-2xl bg-white/[0.08] backdrop-blur-sm border border-white/[0.12]">
-                          <Palette className="w-12 h-12 lg:w-16 lg:h-16 text-white/80 mx-auto" />
-                        </div>
-                        <div className="text-base lg:text-lg font-semibold">Ilan Uzan</div>
-                        <div className="text-sm text-white/50 mt-1">Graphic Designer</div>
-                      </div>
+          <div
+            ref={containerRef}
+            className="relative"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          >
+            {/* Main Container with Dynamic Transform */}
+            <motion.div
+              className="relative overflow-hidden rounded-3xl"
+              style={{
+                transform: isHovering 
+                  ? `perspective(1000px) rotateX(${(cursorPosition.y - 50) * 0.05}deg) rotateY(${(cursorPosition.x - 50) * 0.05}deg)`
+                  : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
+                transformStyle: 'preserve-3d',
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              {/* Liquid Distortion Background */}
+              <div 
+                className="absolute inset-0 opacity-15 pointer-events-none rounded-3xl"
+                style={{
+                  background: isHovering 
+                    ? `radial-gradient(circle at ${cursorPosition.x}% ${cursorPosition.y}%, rgba(0, 122, 255, 0.08) 0%, rgba(88, 86, 214, 0.04) 30%, transparent 60%)`
+                    : 'transparent',
+                  transition: 'background 0.3s ease-out',
+                }}
+              />
+              
+              <GlassCard className="card-spacing rounded-3xl liquid-glass relative" hover={false}>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
+                  <div>
+                    <h2 className="text-2xl lg:text-3xl font-bold text-clean mb-4 lg:mb-6 tracking-tight">
+                      My Journey
+                    </h2>
+                    <div className="space-y-4 lg:space-y-5 text-white/75 leading-relaxed text-sm lg:text-base">
+                      <p>
+                      Originally from Canada and now based in Tel Aviv, I bring a global perspective shaped by my service in the Israeli Air Force as a Level A Ordnance Technician for F-16i aircraft. My background has instilled discipline, adaptability, and a strong technical foundation that I apply across all areas of my work.
+                      </p>
+                      <p>
+                      I am the founder of Kesef Plus, a financial technology startup that combines AI, Web3, and modern personal finance tools. With over six years of experience in digital marketing, UX/UI design, and full-stack development, I specialize in building user-centric products from concept to launch.
+                     </p>
+                      <p>
+                      Fluent in English, French, and Hebrew, I offer a multidisciplinary approach that bridges design and engineering. Whether working on e-commerce platforms, mobile applications, or branding systems, I focus on delivering clean, scalable solutions with a high standard of quality and innovation.
+                      </p>
                     </div>
                   </div>
-                  
-                  {/* Overlay for better text readability if needed */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-                </motion.div>
-              </div>
-            </div>
-          </GlassCard>
+                  <div className="relative">
+                    <motion.div 
+                      className="aspect-square bg-gradient-to-br from-accent-primary/15 via-accent-secondary/10 to-accent-tertiary/15 rounded-3xl overflow-hidden relative"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {/* Profile Image */}
+                      <div className="w-full h-full relative">
+                        <img 
+                          src={profileImage} 
+                          alt="Ilan Uzan - Graphic Designer"
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            // Hide image and show fallback
+                            e.target.style.display = 'none';
+                            const fallback = e.target.parentElement.querySelector('.fallback-content');
+                            if (fallback) fallback.style.display = 'flex';
+                          }}
+                        />
+                        {/* Fallback content */}
+                        <div className="fallback-content absolute inset-0 flex items-center justify-center text-white/60 text-center" style={{display: 'none'}}>
+                          <div>
+                            <div className="mb-4 p-6 rounded-2xl bg-white/[0.08] backdrop-blur-sm border border-white/[0.12]">
+                              <Palette className="w-12 h-12 lg:w-16 lg:h-16 text-white/80 mx-auto" />
+                            </div>
+                            <div className="text-base lg:text-lg font-semibold">Ilan Uzan</div>
+                            <div className="text-sm text-white/50 mt-1">Graphic Designer</div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Overlay for better text readability if needed */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                    </motion.div>
+                  </div>
+                </div>
+              </GlassCard>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Timeline */}

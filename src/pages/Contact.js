@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Linkedin, Palette, Send, Loader2 } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
@@ -12,6 +12,34 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Liquid glass effect states
+  const [isHovering, setIsHovering] = useState(false);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef(null);
+  
+  // Bottom container liquid glass effect states
+  const [isHoveringBottom, setIsHoveringBottom] = useState(false);
+  const [bottomCursorPosition, setBottomCursorPosition] = useState({ x: 0, y: 0 });
+  const bottomContainerRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      setCursorPosition({ x, y });
+    }
+  };
+
+  const handleBottomMouseMove = (e) => {
+    if (bottomContainerRef.current) {
+      const rect = bottomContainerRef.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      setBottomCursorPosition({ x, y });
+    }
+  };
 
   const handleInputChange = (e) => {
     setFormData({
@@ -112,96 +140,127 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16">
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
-            <GlassCard className="card-spacing rounded-3xl liquid-glass" hover={false}>
-              <h2 className="text-xl lg:text-2xl font-bold text-clean mb-4 lg:mb-6 tracking-tight">
-                Send a Message
-              </h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
-                  <div>
-                    <label className="block text-white/85 font-semibold mb-2 text-sm">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full input-field px-4 py-3"
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
+            <div
+              ref={containerRef}
+              className="relative"
+              onMouseMove={handleMouseMove}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              {/* Main Container with Dynamic Transform */}
+              <motion.div
+                className="relative overflow-hidden rounded-3xl"
+                style={{
+                  transform: isHovering 
+                    ? `perspective(1000px) rotateX(${(cursorPosition.y - 50) * 0.05}deg) rotateY(${(cursorPosition.x - 50) * 0.05}deg)`
+                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
+                  transformStyle: 'preserve-3d',
+                }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {/* Liquid Distortion Background */}
+                <div 
+                  className="absolute inset-0 opacity-15 pointer-events-none rounded-3xl"
+                  style={{
+                    background: isHovering 
+                      ? `radial-gradient(circle at ${cursorPosition.x}% ${cursorPosition.y}%, rgba(0, 122, 255, 0.08) 0%, rgba(88, 86, 214, 0.04) 30%, transparent 60%)`
+                      : 'transparent',
+                    transition: 'background 0.3s ease-out',
+                  }}
+                />
+                
+                <GlassCard className="card-spacing rounded-3xl liquid-glass relative" hover={false}>
+                  <h2 className="text-xl lg:text-2xl font-bold text-clean mb-4 lg:mb-6 tracking-tight">
+                    Send a Message
+                  </h2>
                   
-                  <div>
-                    <label className="block text-white/85 font-semibold mb-2 text-sm">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full input-field px-4 py-3"
-                      placeholder="your@email.com"
-                      required
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-white/85 font-semibold mb-2 text-sm">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    className="w-full input-field px-4 py-3"
-                    placeholder="Project inquiry"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-white/85 font-semibold mb-2 text-sm">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={5}
-                    className="w-full input-field px-4 py-3 resize-none"
-                    placeholder="Tell me about your project..."
-                    required
-                  />
-                </div>
-                
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full button-primary px-6 py-4 rounded-2xl font-bold disabled:opacity-50 disabled:cursor-not-allowed"
-                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center space-x-2">
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Sending...</span>
-                    </span>
-                  ) : (
-                    <span className="flex items-center justify-center space-x-2">
-                      <Send className="w-4 h-4" />
-                      <span>Send Message</span>
-                    </span>
-                  )}
-                </motion.button>
-              </form>
-            </GlassCard>
+                  <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+                      <div>
+                        <label className="block text-white/85 font-semibold mb-2 text-sm">
+                          Name
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          className="w-full input-field px-4 py-3"
+                          placeholder="Your name"
+                          required
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-white/85 font-semibold mb-2 text-sm">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          className="w-full input-field px-4 py-3"
+                          placeholder="your@email.com"
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-white/85 font-semibold mb-2 text-sm">
+                        Subject
+                      </label>
+                      <input
+                        type="text"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        className="w-full input-field px-4 py-3"
+                        placeholder="Project inquiry"
+                        required
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-white/85 font-semibold mb-2 text-sm">
+                        Message
+                      </label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        rows={5}
+                        className="w-full input-field px-4 py-3 resize-none"
+                        placeholder="Tell me about your project..."
+                        required
+                      />
+                    </div>
+                    
+                    <motion.button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full button-primary px-6 py-4 rounded-2xl font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                      whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                      whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {isSubmitting ? (
+                        <span className="flex items-center justify-center space-x-2">
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Sending...</span>
+                        </span>
+                      ) : (
+                        <span className="flex items-center justify-center space-x-2">
+                          <Send className="w-4 h-4" />
+                          <span>Send Message</span>
+                        </span>
+                      )}
+                    </motion.button>
+                  </form>
+                </GlassCard>
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Contact Methods */}
@@ -253,16 +312,47 @@ const Contact = () => {
 
         {/* Additional Info */}
         <motion.div variants={itemVariants}>
-          <GlassCard className="text-center p-6 lg:p-8 rounded-3xl liquid-glass">
-            <h3 className="text-lg lg:text-xl font-bold text-clean mb-3 lg:mb-4">
-              Let's Create Something Amazing
-            </h3>
-            <p className="text-white/70 max-w-2xl mx-auto leading-relaxed text-sm lg:text-base px-4">
-              Whether you're looking for brand identity, digital design, or creative consultation, 
-              I'm here to help bring your vision to life. Let's discuss your project and explore 
-              the possibilities together.
-            </p>
-          </GlassCard>
+          <div
+            ref={bottomContainerRef}
+            className="relative"
+            onMouseMove={handleBottomMouseMove}
+            onMouseEnter={() => setIsHoveringBottom(true)}
+            onMouseLeave={() => setIsHoveringBottom(false)}
+          >
+            {/* Main Container with Dynamic Transform */}
+            <motion.div
+              className="relative overflow-hidden rounded-3xl"
+              style={{
+                transform: isHoveringBottom 
+                  ? `perspective(1000px) rotateX(${(bottomCursorPosition.y - 50) * 0.05}deg) rotateY(${(bottomCursorPosition.x - 50) * 0.05}deg)`
+                  : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
+                transformStyle: 'preserve-3d',
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+            >
+              {/* Liquid Distortion Background */}
+              <div 
+                className="absolute inset-0 opacity-15 pointer-events-none rounded-3xl"
+                style={{
+                  background: isHoveringBottom 
+                    ? `radial-gradient(circle at ${bottomCursorPosition.x}% ${bottomCursorPosition.y}%, rgba(0, 122, 255, 0.08) 0%, rgba(88, 86, 214, 0.04) 30%, transparent 60%)`
+                    : 'transparent',
+                  transition: 'background 0.3s ease-out',
+                }}
+              />
+              
+              <GlassCard className="text-center p-6 lg:p-8 rounded-3xl liquid-glass relative">
+                <h3 className="text-lg lg:text-xl font-bold text-clean mb-3 lg:mb-4">
+                  Let's Create Something Amazing
+                </h3>
+                <p className="text-white/70 max-w-2xl mx-auto leading-relaxed text-sm lg:text-base px-4">
+                  Whether you're looking for brand identity, digital design, or creative consultation, 
+                  I'm here to help bring your vision to life. Let's discuss your project and explore 
+                  the possibilities together.
+                </p>
+              </GlassCard>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </motion.div>

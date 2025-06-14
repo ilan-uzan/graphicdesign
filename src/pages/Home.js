@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { User, ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 
 const Home = ({ mousePosition }) => {
@@ -9,6 +9,14 @@ const Home = ({ mousePosition }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
+  
+  // Button hover states and cursor positions
+  const [isHoveringButton1, setIsHoveringButton1] = useState(false);
+  const [isHoveringButton2, setIsHoveringButton2] = useState(false);
+  const [button1CursorPosition, setButton1CursorPosition] = useState({ x: 0, y: 0 });
+  const [button2CursorPosition, setButton2CursorPosition] = useState({ x: 0, y: 0 });
+  const button1Ref = useRef(null);
+  const button2Ref = useRef(null);
   
   // Simplified parallax transforms
   const y1 = useTransform(scrollY, [0, 800], [0, -100]);
@@ -21,6 +29,24 @@ const Home = ({ mousePosition }) => {
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
       setCursorPosition({ x, y });
+    }
+  };
+
+  const handleButton1MouseMove = (e) => {
+    if (button1Ref.current) {
+      const rect = button1Ref.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      setButton1CursorPosition({ x, y });
+    }
+  };
+
+  const handleButton2MouseMove = (e) => {
+    if (button2Ref.current) {
+      const rect = button2Ref.current.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      setButton2CursorPosition({ x, y });
     }
   };
 
@@ -120,10 +146,10 @@ const Home = ({ mousePosition }) => {
             >
               {/* Liquid Distortion Background */}
               <div 
-                className="absolute inset-0 opacity-30 pointer-events-none"
+                className="absolute inset-0 opacity-15 pointer-events-none"
                 style={{
                   background: isHovering 
-                    ? `radial-gradient(circle at ${cursorPosition.x}% ${cursorPosition.y}%, rgba(0, 122, 255, 0.15) 0%, rgba(88, 86, 214, 0.08) 30%, transparent 60%)`
+                    ? `radial-gradient(circle at ${cursorPosition.x}% ${cursorPosition.y}%, rgba(0, 122, 255, 0.08) 0%, rgba(88, 86, 214, 0.04) 30%, transparent 60%)`
                     : 'transparent',
                   transition: 'background 0.3s ease-out',
                 }}
@@ -171,37 +197,97 @@ const Home = ({ mousePosition }) => {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <Link to="/projects">
-            <motion.button
-              className="button-primary px-10 py-4 rounded-2xl min-w-[200px] font-bold text-base"
-              whileHover={{ 
-                scale: 1.02, 
-                y: -2,
-              }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.2 }}
+            <div
+              ref={button1Ref}
+              className="relative"
+              onMouseMove={handleButton1MouseMove}
+              onMouseEnter={() => setIsHoveringButton1(true)}
+              onMouseLeave={() => setIsHoveringButton1(false)}
             >
-              <span className="flex items-center justify-center space-x-2">
-                <span>View My Work</span>
-                <ArrowRight className="w-4 h-4" />
-              </span>
-            </motion.button>
+              <motion.div
+                className="relative overflow-hidden rounded-2xl"
+                style={{
+                  transform: isHoveringButton1 
+                    ? `perspective(1000px) rotateX(${(button1CursorPosition.y - 50) * 0.08}deg) rotateY(${(button1CursorPosition.x - 50) * 0.08}deg)`
+                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
+                  transformStyle: 'preserve-3d',
+                }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {/* Liquid Distortion Background for Button 1 */}
+                <div 
+                  className="absolute inset-0 opacity-20 pointer-events-none rounded-2xl"
+                  style={{
+                    background: isHoveringButton1 
+                      ? `radial-gradient(circle at ${button1CursorPosition.x}% ${button1CursorPosition.y}%, rgba(0, 122, 255, 0.12) 0%, rgba(88, 86, 214, 0.06) 40%, transparent 70%)`
+                      : 'transparent',
+                    transition: 'background 0.3s ease-out',
+                  }}
+                />
+                
+                <motion.button
+                  className="button-primary px-10 py-4 rounded-2xl min-w-[200px] font-bold text-base relative"
+                  whileHover={{ 
+                    scale: 1.02, 
+                    y: -2,
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <span className="flex items-center justify-center space-x-2">
+                    <span>View My Work</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </motion.button>
+              </motion.div>
+            </div>
           </Link>
 
           <Link to="/about">
-            <motion.button
-              className="button-secondary px-10 py-4 rounded-2xl min-w-[200px] font-bold text-base"
-              whileHover={{ 
-                scale: 1.02, 
-                y: -2,
-              }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.2 }}
+            <div
+              ref={button2Ref}
+              className="relative"
+              onMouseMove={handleButton2MouseMove}
+              onMouseEnter={() => setIsHoveringButton2(true)}
+              onMouseLeave={() => setIsHoveringButton2(false)}
             >
-              <span className="flex items-center justify-center space-x-2">
-                <span>About Me</span>
-                <Sparkles className="w-4 h-4" />
-              </span>
-            </motion.button>
+              <motion.div
+                className="relative overflow-hidden rounded-2xl"
+                style={{
+                  transform: isHoveringButton2 
+                    ? `perspective(1000px) rotateX(${(button2CursorPosition.y - 50) * 0.08}deg) rotateY(${(button2CursorPosition.x - 50) * 0.08}deg)`
+                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
+                  transformStyle: 'preserve-3d',
+                }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {/* Liquid Distortion Background for Button 2 */}
+                <div 
+                  className="absolute inset-0 opacity-20 pointer-events-none rounded-2xl"
+                  style={{
+                    background: isHoveringButton2 
+                      ? `radial-gradient(circle at ${button2CursorPosition.x}% ${button2CursorPosition.y}%, rgba(175, 82, 222, 0.12) 0%, rgba(88, 86, 214, 0.06) 40%, transparent 70%)`
+                      : 'transparent',
+                    transition: 'background 0.3s ease-out',
+                  }}
+                />
+                
+                <motion.button
+                  className="button-secondary px-10 py-4 rounded-2xl min-w-[200px] font-bold text-base relative"
+                  whileHover={{ 
+                    scale: 1.02, 
+                    y: -2,
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <span className="flex items-center justify-center space-x-2">
+                    <span>About Me</span>
+                    <Sparkles className="w-4 h-4" />
+                  </span>
+                </motion.button>
+              </motion.div>
+            </div>
           </Link>
         </motion.div>
       </div>
