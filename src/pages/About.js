@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Palette } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
+import profileImage from '../assets/images/profile.jpg';
 
 const About = () => {
   const timeline = [
@@ -111,16 +112,37 @@ const About = () => {
               </div>
               <div className="relative">
                 <motion.div 
-                  className="aspect-square bg-gradient-to-br from-accent-primary/15 via-accent-secondary/10 to-accent-tertiary/15 rounded-3xl flex items-center justify-center"
+                  className="aspect-square bg-gradient-to-br from-accent-primary/15 via-accent-secondary/10 to-accent-tertiary/15 rounded-3xl overflow-hidden relative"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="text-white/60 text-center">
-                    <div className="mb-4 p-6 rounded-2xl bg-white/[0.08] backdrop-blur-sm border border-white/[0.12]">
-                      <Palette className="w-12 h-12 lg:w-16 lg:h-16 text-white/80 mx-auto" />
+                  {/* Profile Image */}
+                  <div className="w-full h-full relative">
+                    <img 
+                      src={profileImage} 
+                      alt="Ilan Uzan - Graphic Designer"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        // Hide image and show fallback
+                        e.target.style.display = 'none';
+                        const fallback = e.target.parentElement.querySelector('.fallback-content');
+                        if (fallback) fallback.style.display = 'flex';
+                      }}
+                    />
+                    {/* Fallback content */}
+                    <div className="fallback-content absolute inset-0 flex items-center justify-center text-white/60 text-center" style={{display: 'none'}}>
+                      <div>
+                        <div className="mb-4 p-6 rounded-2xl bg-white/[0.08] backdrop-blur-sm border border-white/[0.12]">
+                          <Palette className="w-12 h-12 lg:w-16 lg:h-16 text-white/80 mx-auto" />
+                        </div>
+                        <div className="text-base lg:text-lg font-semibold">Ilan Uzan</div>
+                        <div className="text-sm text-white/50 mt-1">Graphic Designer</div>
+                      </div>
                     </div>
-                    <div className="text-base lg:text-lg font-semibold">Creative Vision</div>
                   </div>
+                  
+                  {/* Overlay for better text readability if needed */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
                 </motion.div>
               </div>
             </div>
