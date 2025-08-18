@@ -173,7 +173,7 @@ const Home = ({ mousePosition }) => {
                     variants={itemVariants}
                     className="text-2xl md:text-3xl text-white/90 font-light tracking-tight"
                   >
-                    Graphic Designer & Visual Storyteller
+                    Full Stack Engineer and Entrepreneur
                   </motion.p>
 
                   {/* Description */}
@@ -181,8 +181,7 @@ const Home = ({ mousePosition }) => {
                     variants={itemVariants}
                     className="text-lg text-white/75 max-w-2xl leading-relaxed text-balance font-medium"
                   >
-                    Creating compelling visual narratives that bridge creativity and functionality. 
-                    Transforming complex ideas into elegant designs that inspire and engage audiences worldwide.
+                    Building scalable applications that merge innovation and practicality. Turning complex challenges into seamless digital solutions that empower people and businesses worldwide.
                   </motion.p>
                 </motion.div>
               </GlassCard>

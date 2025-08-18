@@ -41,7 +41,7 @@ const About = () => {
       year: '2019-2022',
       title: 'Graduated',
       company: 'Vanier College',
-      description: 'DEC in Social Sciences with Mathematic.'
+      description: 'DCS in Social Sciences with Mathematic.'
     },
     {
       year: '2019-2025',
@@ -94,8 +94,7 @@ const About = () => {
             About Me
           </h1>
           <p className="text-lg lg:text-xl text-white/75 max-w-3xl mx-auto leading-relaxed px-4">
-            I'm a passionate graphic designer from Israel, dedicated to creating meaningful visual experiences 
-            that connect brands with their audiences through thoughtful design and creative innovation.
+            I’m a Full Stack Developer and Entrepreneur based in Tel Aviv, passionate about building scalable apps and innovative products that merge technology, design, and business. With experience in startups, e-commerce, and software development, I focus on creating solutions that are both impactful and user-friendly.
           </p>
         </motion.div>
 
@@ -138,13 +137,13 @@ const About = () => {
                     </h2>
                     <div className="space-y-4 lg:space-y-5 text-white/75 leading-relaxed text-sm lg:text-base">
                       <p>
-                      Originally from Canada and now based in Tel Aviv, I bring a global perspective shaped by my service in the Israeli Air Force as a Level A Ordnance Technician for F-16i aircraft. My background has instilled discipline, adaptability, and a strong technical foundation that I apply across all areas of my work.
+                        Originally from Canada and now based in Tel Aviv, I bring a global perspective shaped by my service in the Israeli Air Force as a Level A Ordnance Technician for F-16i aircraft. That experience instilled discipline, adaptability, and problem-solving skills that I apply daily as a developer and entrepreneur.   
                       </p>
                       <p>
-                      I am the founder of Kesef Plus, a financial technology startup that combines AI, Web3, and modern personal finance tools. With over six years of experience in digital marketing, UX/UI design, and full-stack development, I specialize in building user-centric products from concept to launch.
-                     </p>
+                        I am the founder of Kesef Plus, a financial technology startup that combines AI, Web3, and modern personal finance tools. With over six years of experience in digital marketing, e-commerce, and full-stack development, I specialize in taking products from concept to launch.
+                      </p>
                       <p>
-                      Fluent in English, French, and Hebrew, I offer a multidisciplinary approach that bridges design and engineering. Whether working on e-commerce platforms, mobile applications, or branding systems, I focus on delivering clean, scalable solutions with a high standard of quality and innovation.
+                        Fluent in English, French, and Hebrew, I bridge design, engineering, and business. Whether building SaaS platforms, mobile apps, or e-commerce solutions, my goal is to deliver clean, scalable products with lasting impact.
                       </p>
                     </div>
                   </div>

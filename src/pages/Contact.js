@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Linkedin, Palette, Send, Loader2 } from 'lucide-react';
+import { Mail, Linkedin, Palette, Send, Loader2 } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 
 const Contact = () => {
@@ -74,13 +74,6 @@ const Contact = () => {
       value: 'ilanxuzan@gmail.com',
       description: 'Send me an email for project inquiries',
       action: 'mailto:ilanxuzan@gmail.com',
-    },
-    {
-      icon: Phone,
-      title: 'Phone',
-      value: '+972 50 283 8283',
-      description: 'Call me for urgent matters',
-      action: 'tel:+972502838283',
     },
     {
       icon: Linkedin,
