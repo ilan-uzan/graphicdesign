@@ -1,7 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Palette, Send, Loader2, Github } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
+
+// Icons: use react-icons (Lucide set via react-icons + Medium via Font Awesome)
+import { LuMail, LuLinkedin, LuSend, LuLoader2, LuGithub } from 'react-icons/lu';
+import { FaMedium } from 'react-icons/fa';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -66,37 +70,36 @@ const Contact = () => {
       message: '',
     });
   };
-
-  const contactMethods = [
-    {
-      icon: Mail,
-      title: 'Email',
-      value: 'ilanxuzan@gmail.com',
-      description: 'Send me an email for project inquiries',
-      action: 'mailto:ilanxuzan@gmail.com',
-    },
-    {
-      icon: Linkedin,
-      title: 'LinkedIn',
-      value: 'LinkedIn Profile',
-      description: 'Connect with me professionally',
-      action: 'https://www.linkedin.com/in/ilan-uzan-646825204',
-    },
-    {
-      icon: Github,
-      title: 'Github',
-      value: 'Github Profile',
-      description: 'View my Github',
-      action: 'https://github.com/ilan-uzan',
-    },
-    // {
-    //   icon: Medium,
-    //   // title: 'Medium',
-    //   value: 'Medium Articles',
-    //   description: 'Read my latest articles',
-    //   action: 'https://medium.com/@ilanxuzan',
-    // },
-  ];
+const contactMethods = [
+  {
+    icon: LuMail,
+    title: 'Email',
+    value: 'ilanxuzan@gmail.com',
+    description: 'Send me an email for project inquiries',
+    action: 'mailto:ilanxuzan@gmail.com',
+  },
+  {
+    icon: LuLinkedin,
+    title: 'LinkedIn',
+    value: 'LinkedIn Profile',
+    description: 'Connect with me professionally',
+    action: 'https://www.linkedin.com/in/ilan-uzan-646825204',
+  },
+  {
+    icon: LuGithub,
+    title: 'GitHub',
+    value: 'GitHub Profile',
+    description: 'View my GitHub',
+    action: 'https://github.com/ilan-uzan',
+  },
+  {
+    icon: FaMedium,
+    title: 'Medium',
+    value: 'Medium Articles',
+    description: 'Read my latest articles',
+    action: 'https://medium.com/@ilanxuzan',
+  },
+];
 
   const containerVariants = {
     hidden: { opacity: 0 },
