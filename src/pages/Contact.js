@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Palette, Send, Loader2 } from 'lucide-react';
+import { Mail, Linkedin, Palette, Send, Loader2, Github } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 
 const Contact = () => {
@@ -83,12 +83,19 @@ const Contact = () => {
       action: 'https://www.linkedin.com/in/ilan-uzan-646825204',
     },
     {
-      icon: Palette,
-      title: 'Behance',
-      value: 'behance.net/ilanuzan',
-      description: 'View my creative portfolio',
-      action: 'https://behance.net/ilanuzan',
+      icon: Github,
+      title: 'Github',
+      value: 'Github Profile',
+      description: 'View my Github',
+      action: 'https://github.com/ilan-uzan',
     },
+    // {
+    //   icon: Medium,
+    //   // title: 'Medium',
+    //   value: 'Medium Articles',
+    //   description: 'Read my latest articles',
+    //   action: 'https://medium.com/@ilanxuzan',
+    // },
   ];
 
   const containerVariants = {
@@ -339,9 +346,7 @@ const Contact = () => {
                   Let's Create Something Amazing
                 </h3>
                 <p className="text-white/70 max-w-2xl mx-auto leading-relaxed text-sm lg:text-base px-4">
-                  Whether you're looking for brand identity, digital design, or creative consultation, 
-                  I'm here to help bring your vision to life. Let's discuss your project and explore 
-                  the possibilities together.
+                  From idea to deployment, I design and develop full-stack applications that balance great user experience with strong engineering. Let’s connect and explore how I can help build and scale your vision.
                 </p>
               </GlassCard>
             </motion.div>
