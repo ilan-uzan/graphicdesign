@@ -18,6 +18,10 @@ const Home = ({ mousePosition }) => {
   const button1Ref = useRef(null);
   const button2Ref = useRef(null);
   
+  // GitHub container hover states and cursor positions
+  const [isHoveringGithub, setIsHoveringGithub] = useState(false);
+  const [githubCursorPosition, setGithubCursorPosition] = useState({ x: 0, y: 0 });
+  
   // Simplified parallax transforms
   const y1 = useTransform(scrollY, [0, 800], [0, -100]);
   const y2 = useTransform(scrollY, [0, 800], [0, -50]);
@@ -186,6 +190,87 @@ const Home = ({ mousePosition }) => {
                 </motion.div>
               </GlassCard>
             </motion.div>
+          </div>
+        </motion.div>
+
+        {/* GitHub Contribution Graph */}
+        <motion.div
+          variants={itemVariants}
+          style={{ y: y2 }}
+          className="mb-12"
+        >
+          <div className="max-w-4xl mx-auto">
+            <div
+              className="relative"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                setGithubCursorPosition({ x, y });
+              }}
+              onMouseEnter={() => setIsHoveringGithub(true)}
+              onMouseLeave={() => setIsHoveringGithub(false)}
+            >
+              {/* Main Container with Dynamic Transform */}
+              <motion.div
+                className="relative overflow-hidden rounded-3xl"
+                style={{
+                  transform: isHoveringGithub 
+                    ? `perspective(1000px) rotateX(${(githubCursorPosition.y - 50) * 0.05}deg) rotateY(${(githubCursorPosition.x - 50) * 0.05}deg)`
+                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
+                  transformStyle: 'preserve-3d',
+                }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {/* Liquid Distortion Background */}
+                <div 
+                  className="absolute inset-0 opacity-15 pointer-events-none rounded-3xl"
+                  style={{
+                    background: isHoveringGithub 
+                      ? `radial-gradient(circle at ${githubCursorPosition.x}% ${githubCursorPosition.y}%, rgba(0, 122, 255, 0.08) 0%, rgba(88, 86, 214, 0.04) 30%, transparent 60%)`
+                      : 'transparent',
+                    transition: 'background 0.3s ease-out',
+                  }}
+                />
+                
+                <GlassCard className="p-6 lg:p-8 rounded-3xl liquid-glass relative" hover={false}>
+              <div className="text-center mb-6">
+                <h2 className="text-xl lg:text-2xl font-bold text-clean mb-2">
+                  My GitHub Activity
+                </h2>
+                <p className="text-white/70 text-sm lg:text-base">
+                  A visual representation of my coding contributions and activity
+                </p>
+              </div>
+              
+              {/* GitHub Contribution Graph */}
+              <div className="flex justify-center">
+                <div className="bg-gray-900/50 rounded-2xl p-4 lg:p-6 border border-white/10">
+                  <img
+                    src="https://ghchart.rshah.org/2A9D8F/ilan-uzan"
+                    alt="GitHub Contribution Graph"
+                    className="w-full max-w-4xl h-auto rounded-xl"
+                    style={{
+                      filter: 'drop-shadow(0 0 20px rgba(42, 157, 143, 0.3))',
+                    }}
+                  />
+                </div>
+              </div>
+              
+              <div className="text-center mt-4">
+                <a
+                  href="https://github.com/ilan-uzan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 text-accent-primary hover:text-accent-primary/80 transition-colors duration-200 text-sm lg:text-base"
+                >
+                  <span>View my full GitHub profile</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+                </GlassCard>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
 

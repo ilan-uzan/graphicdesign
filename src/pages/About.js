@@ -19,12 +19,12 @@ const About = () => {
   };
 
   const timeline = [
-    {
-      year: '2025-Now',
-      title: 'Startup Founder',
-      company: 'Kesef Plus',
-      description: 'Leading the development of Kesef Plus, a financial technology startup that combines AI, Web3, and modern personal finance tools.',
-    },
+    // {
+    //   year: '2025-Now',
+    //   title: 'Startup Founder',
+    //   company: 'Kesef Plus',
+    //   description: 'Leading the development of Kesef Plus, a financial technology startup that combines AI, Web3, and modern personal finance tools.',
+    // },
     {
       year: '2025-Now',
       title: 'Full Stack Developer Student',

@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import GlassCard from '../components/GlassCard';
 
-// Icons: use react-icons (Lucide set via react-icons + Medium via Font Awesome)
-import { LuMail, LuLinkedin, LuSend, LuLoader2, LuGithub } from 'react-icons/lu';
+// Icons: use lucide-react for Lucide icons + Font Awesome for Medium
+import { Mail, Linkedin, Send, Loader2, Github } from 'lucide-react';
 import { FaMedium } from 'react-icons/fa';
 
 
@@ -72,21 +72,21 @@ const Contact = () => {
   };
 const contactMethods = [
   {
-    icon: LuMail,
+    icon: Mail,
     title: 'Email',
     value: 'ilanxuzan@gmail.com',
     description: 'Send me an email for project inquiries',
     action: 'mailto:ilanxuzan@gmail.com',
   },
   {
-    icon: LuLinkedin,
+    icon: Linkedin,
     title: 'LinkedIn',
     value: 'LinkedIn Profile',
     description: 'Connect with me professionally',
     action: 'https://www.linkedin.com/in/ilan-uzan-646825204',
   },
   {
-    icon: LuGithub,
+    icon: Github,
     title: 'GitHub',
     value: 'GitHub Profile',
     description: 'View my GitHub',
