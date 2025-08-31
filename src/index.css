@@ -248,7 +248,7 @@
     @apply pt-24 lg:pt-32 pb-20 lg:pb-28;
   }
 
-  /* Simple mobile touch improvements */
+  /* Mobile touch optimization */
   @media (max-width: 768px) {
     button, a, [role="button"] {
       -webkit-tap-highlight-color: transparent;
@@ -258,18 +258,19 @@
     .cursor-pointer {
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     
-    /* Disable complex animations on mobile */
+    /* Ensure touch events work properly */
+    .touch-manipulation {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Disable complex animations that interfere with touch */
     .liquid-glass {
       transform: none !important;
       transition: none !important;
-    }
-    
-    /* Reduce motion for mobile users */
-    * {
-      animation-duration: 0.1s !important;
-      transition-duration: 0.1s !important;
     }
     
     /* Optimize backdrop filters for mobile */
@@ -277,10 +278,12 @@
       backdrop-filter: blur(10px) !important;
     }
     
-    /* Disable 3D transforms on mobile */
-    .perspective-1000 {
-      transform: none !important;
-      perspective: none !important;
+    /* Additional mobile touch optimization for project cards */
+    .cursor-pointer.touch-manipulation {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
     }
   }
   
