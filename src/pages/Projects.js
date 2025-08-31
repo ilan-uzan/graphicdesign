@@ -216,6 +216,20 @@ const Projects = () => {
         isOpen={isModalOpen}
         onClose={closeProjectModal}
       />
+
+      {/* Footer - Only visible at bottom of page */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
+        className="mt-32 mb-8 text-center"
+      >
+        <div className="glass-card px-6 py-3 rounded-2xl max-w-fit mx-auto">
+          <p className="text-white/60 text-sm font-medium">
+            © 2025 Ilan Uzan. All rights reserved.
+          </p>
+        </div>
+      </motion.div>
     </div>
   );
 };

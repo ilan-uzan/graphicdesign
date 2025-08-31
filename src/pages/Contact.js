@@ -355,6 +355,18 @@ const contactMethods = [
             </motion.div>
           </div>
         </motion.div>
+
+        {/* Footer - Only visible at bottom of page */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-32 mb-8 text-center"
+        >
+          <div className="glass-card px-6 py-3 rounded-2xl max-w-fit mx-auto">
+            <p className="text-white/60 text-sm font-medium">
+              © 2025 Ilan Uzan. All rights reserved.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </motion.div>
   );

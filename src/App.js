@@ -47,14 +47,7 @@ function App() {
           </AnimatePresence>
         </main>
 
-        {/* Footer */}
-        <footer className="relative z-30 mt-20 mb-8">
-          <div className="glass-card px-6 py-3 rounded-2xl max-w-fit mx-auto">
-            <p className="text-white/60 text-sm font-medium">
-              © 2025 Ilan Uzan. All rights reserved.
-            </p>
-          </div>
-        </footer>
+
       </div>
     </Router>
   );
