@@ -20,86 +20,52 @@ export const projects = [
   {
     id: 2,
     title: "🚀 Kesef Plus - Financial Technology Platform",
-    description: "A fintech startup combining AI, Web3, and modern personal finance tools. Full-stack application with React frontend, Node.js backend, and blockchain integration for secure financial transactions and portfolio management.",
-    tags: ["React", "Node.js", "Web3", "Fintech", "AI", "Blockchain"],
-    tools: ["React.js", "Node.js", "Express", "PostgreSQL", "Web3.js", "TensorFlow"],
+    description: "A next-generation fintech project being built in Tel Aviv that simplifies money management for the modern generation. Combines multiple financial tools into one platform with clean, intuitive design powered by smart automation and AI.",
+    tags: ["React Native", "Node.js", "Supabase", "Fintech", "AI", "Web3"],
+    tools: ["React Native (Expo)", "Tailwind-RN", "Node.js", "Express", "Supabase", "PostgreSQL", "Plaid", "Stripe", "OpenAI", "OneSignal"],
     image: "Kesef Plus Platform",
     link: "https://kesefplus.com",
     features: [
-      "AI-powered financial insights",
-      "Web3 wallet integration",
-      "Real-time portfolio tracking",
-      "Secure transaction processing",
-      "Responsive web application",
-      "Blockchain-based security"
+      "Glassmorphism Apple-style design",
+      "AI-powered financial automation",
+      "Plaid & Stripe integrations",
+      "Supabase authentication & database",
+      "Push notifications with OneSignal",
+      "Preparing for closed beta testing"
     ]
   },
   {
     id: 3,
-    title: "🎨 Portfolio Website - React & Tailwind CSS",
-    description: "Modern, responsive portfolio website built with React, Framer Motion animations, and Tailwind CSS. Features glass morphism effects, interactive 3D transforms, and smooth page transitions for an engaging user experience.",
-    tags: ["React", "Tailwind CSS", "Framer Motion", "UI/UX", "Portfolio"],
-    tools: ["React.js", "Tailwind CSS", "Framer Motion", "Lucide React", "PostCSS"],
-    image: "Portfolio Website",
-    link: "https://github.com/ilan-uzan/graphicdesignportfoliowebsite",
+    title: "🤖 CeeVee AI - AI-Powered CV Generator",
+    description: "Build the perfect CV in minutes with AI. A smart CV and motivation letter generator powered by GPT-4, featuring real-time preview, modern glassmorphism UI, and professional PDF export capabilities.",
+    tags: ["Next.js", "TypeScript", "AI/ML", "GPT-4", "Firebase", "CV Generator"],
+    tools: ["Next.js 14", "TypeScript", "Tailwind CSS", "Firebase Auth", "Firestore", "OpenAI GPT-4", "jsPDF", "html2canvas"],
+    image: "CeeVee AI Platform",
+    link: "https://github.com/ilan-uzan/ceevee-ai",
     features: [
-      "Glass morphism design",
-      "Interactive 3D hover effects",
-      "Smooth animations",
-      "Responsive design",
-      "GitHub integration",
-      "Modern UI components"
+      "GPT-4 powered CV generation",
+      "Real-time preview updates",
+      "Beautiful glassmorphism design",
+      "Pre-built job role templates",
+      "Google Sign-in authentication",
+      "Professional PDF export"
     ]
   },
   {
     id: 4,
-    title: "🛒 E-commerce Platform - Full Stack Solution",
-    description: "Complete e-commerce solution with user authentication, product management, shopping cart, payment processing, and admin dashboard. Built with modern web technologies and responsive design principles.",
-    tags: ["Full Stack", "E-commerce", "Authentication", "Payment", "Admin"],
-    tools: ["React", "Node.js", "Express", "PostgreSQL", "Stripe", "JWT"],
-    image: "E-commerce Platform",
-    link: "https://github.com/ilan-uzan/ecommerce-platform",
+    title: "🎮 Galactic Defenders - Space Invaders Reimagined",
+    description: "A modern reimagining of the classic Space Invaders arcade game, built with Python and Tkinter. Features progressive difficulty, local leaderboard system, and adaptive enemy behavior with educational space facts.",
+    tags: ["Python", "Game Development", "Tkinter", "Arcade Game", "SQLite", "Educational"],
+    tools: ["Python 3.8+", "Tkinter", "SQLite3", "Requests", "Faker", "Custom Graphics"],
+    image: "Galactic Defenders Game",
+    link: "https://github.com/ilan-uzan/galacticdefendersv2",
     features: [
-      "User authentication & authorization",
-      "Product catalog management",
-      "Shopping cart functionality",
-      "Stripe payment integration",
-      "Admin dashboard",
-      "Order management system"
-    ]
-  },
-  {
-    id: 5,
-    title: "📱 Mobile App - React Native & Firebase",
-    description: "Cross-platform mobile application for task management and productivity tracking. Features offline support, real-time synchronization, push notifications, and intuitive user interface design.",
-    tags: ["React Native", "Firebase", "Mobile", "Productivity", "Offline"],
-    tools: ["React Native", "Firebase", "Redux", "AsyncStorage", "Push Notifications"],
-    image: "Mobile App",
-    link: "https://github.com/ilan-uzan/productivity-app",
-    features: [
-      "Cross-platform compatibility",
-      "Offline functionality",
-      "Real-time sync",
-      "Push notifications",
-      "Intuitive UI/UX",
-      "Performance optimization"
-    ]
-  },
-  {
-    id: 6,
-    title: "🔐 Authentication Service - Microservice Architecture",
-    description: "Secure authentication microservice with JWT tokens, OAuth integration, role-based access control, and comprehensive security features. Built with Node.js, Express, and PostgreSQL for scalability and security.",
-    tags: ["Microservices", "Authentication", "Security", "JWT", "OAuth"],
-    tools: ["Node.js", "Express", "PostgreSQL", "JWT", "OAuth2", "bcrypt"],
-    image: "Auth Service",
-    link: "https://github.com/ilan-uzan/auth-service",
-    features: [
-      "JWT token management",
-      "OAuth2 integration",
-      "Role-based access control",
-      "Password encryption",
-      "Rate limiting",
-      "Security logging"
+      "Classic arcade gameplay with modern enhancements",
+      "Progressive difficulty system",
+      "Local leaderboard with SQLite database",
+      "Dynamic visual effects and particle systems",
+      "Educational space facts after each game",
+      "Mobile-friendly design optimization"
     ]
   }
 ]; 

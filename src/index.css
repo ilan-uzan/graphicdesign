@@ -221,7 +221,7 @@
   }
   
   .section-spacing {
-    @apply py-20 lg:py-28;
+    @apply pt-24 lg:pt-32 pb-20 lg:pb-28;
   }
   
   .container-padding {

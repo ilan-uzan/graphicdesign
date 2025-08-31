@@ -9,7 +9,9 @@ const Projects = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filter, setFilter] = useState('All');
 
-  const allTags = ['All', ...new Set(projects.flatMap(project => project.tags))];
+  // Only show the most relevant tags for filtering based on actual project technologies
+  const relevantTags = ['All', 'Python', 'React Native', 'Next.js', 'AI/ML', 'Cybersecurity', 'Game Development'];
+  const allTags = relevantTags;
   
   const filteredProjects = filter === 'All' 
     ? projects 
@@ -123,8 +125,8 @@ const Projects = () => {
             My Projects
           </h1>
           <p className="text-lg lg:text-xl text-white/75 max-w-3xl mx-auto leading-relaxed px-4">
-            A collection of full-stack engineering projects showcasing technical expertise, innovation, and problem-solving skills. 
-            From cybersecurity tools to fintech platforms, each project demonstrates modern development practices and scalable architecture.
+            A collection of my real projects showcasing technical expertise across cybersecurity, fintech, AI, and game development. 
+            Each project demonstrates practical problem-solving and modern development practices.
           </p>
         </motion.div>
 
