@@ -1,6 +1,12 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Import project images
+import galacticDefenderImg from '../assets/images/galacticdefender.png';
+import ceeveeImg from '../assets/images/ceevee.png';
+import sentinelImg from '../assets/images/sentinel.png';
+import kesefPlusImg from '../assets/images/kesefpluslogo.png';
+
 const ProjectModal = ({ project, isOpen, onClose }) => {
   const backdropVariants = {
     hidden: { opacity: 0 },
@@ -50,10 +56,23 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             {/* Project Content */}
             <div className="p-6 md:p-8">
               {/* Project Image */}
-              <div className="aspect-video bg-gradient-to-br from-gradient-purple/20 to-gradient-blue/20 rounded-xl mb-6 flex items-center justify-center">
-                <div className="text-white/60 text-lg">
-                  {project.image || 'Project Preview'}
-                </div>
+              <div className="aspect-[3/2] sm:aspect-video aspect-[2/1] bg-gradient-to-br from-gradient-purple/20 to-gradient-blue/20 rounded-lg sm:rounded-xl mb-3 sm:mb-6 overflow-hidden">
+                {project.image && project.image.endsWith('.png') ? (
+                  <img 
+                    src={project.image === 'galacticdefender.png' ? galacticDefenderImg : 
+                         project.image === 'ceevee.png' ? ceeveeImg : 
+                         project.image === 'sentinel.png' ? sentinelImg : 
+                         project.image === 'kesefpluslogo.png' ? kesefPlusImg : project.image}
+                    alt={project.title}
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full">
+                    <div className="text-white/60 text-sm sm:text-lg">
+                      {project.image || 'Project Preview'}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Project Details */}

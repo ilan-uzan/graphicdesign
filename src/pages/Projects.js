@@ -4,6 +4,12 @@ import { Layers, Search } from 'lucide-react';
 import ProjectModal from '../components/ProjectModal';
 import { projects } from '../data/projects';
 
+// Import project images
+import galacticDefenderImg from '../assets/images/galacticdefender.png';
+import ceeveeImg from '../assets/images/ceevee.png';
+import sentinelImg from '../assets/images/sentinel.png';
+import kesefPlusImg from '../assets/images/kesefpluslogo.png';
+
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,18 +39,32 @@ const Projects = () => {
         className="cursor-pointer transform transition-all duration-300 ease-out hover:scale-[1.02] hover:-translate-y-1"
         onClick={() => openProjectModal(project)}
       >
-        <div className="h-full overflow-hidden rounded-3xl p-8 lg:p-12 backdrop-blur-xl bg-white/[0.015] border border-white/[0.04] relative">
+        <div className="h-full overflow-hidden rounded-3xl p-3 sm:p-6 lg:p-8 xl:p-12 backdrop-blur-xl bg-white/[0.015] border border-white/[0.04] relative">
           {/* Project Image */}
-          <div className="aspect-[4/3] bg-gradient-to-br from-accent-primary/12 via-accent-secondary/8 to-accent-tertiary/12 relative overflow-hidden rounded-2xl mb-6">
-            {/* Content */}
-            <div className="absolute inset-0 flex items-center justify-center z-10">
-              <div className="text-white/60 text-center">
-                <div className="mb-4 p-4 rounded-2xl bg-white/[0.08] backdrop-blur-sm border border-white/[0.12]">
-                  <Layers className="w-8 h-8 text-white/80 mx-auto" />
+          <div className="aspect-[3/2] sm:aspect-[4/3] aspect-[2/1] bg-gradient-to-br from-accent-primary/12 via-accent-secondary/8 to-accent-tertiary/12 relative overflow-hidden rounded-2xl mb-3 sm:mb-6 p-2 sm:p-4">
+            {/* Display actual image if available, otherwise show placeholder */}
+            {project.image && project.image.endsWith('.png') ? (
+              <img 
+                src={project.image === 'galacticdefender.png' ? galacticDefenderImg : 
+                     project.image === 'ceevee.png' ? ceeveeImg : 
+                     project.image === 'sentinel.png' ? sentinelImg : 
+                     project.image === 'kesefpluslogo.png' ? kesefPlusImg : project.image}
+                alt={project.title}
+                className="w-full h-full object-contain"
+              />
+            ) : (
+              <>
+                {/* Content */}
+                <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <div className="text-white/60 text-center">
+                    <div className="mb-2 sm:mb-4 p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-sm border border-white/[0.12]">
+                      <Layers className="w-6 h-6 sm:w-8 sm:h-8 text-white/80 mx-auto" />
+                    </div>
+                    <div className="text-xs sm:text-sm font-bold text-white/80">{project.image}</div>
+                  </div>
                 </div>
-                <div className="text-sm font-bold text-white/80">{project.image}</div>
-              </div>
-            </div>
+              </>
+            )}
             
             {/* Hover Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
