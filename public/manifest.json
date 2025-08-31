@@ -1,0 +1,25 @@
+{
+  "short_name": "Ilan Uzan",
+  "name": "Ilan Uzan - Portfolio",
+  "description": "Full Stack Engineer & Designer Portfolio",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2A9D8F",
+  "background_color": "#0F172A",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "technology", "design"],
+  "lang": "en"
+}
