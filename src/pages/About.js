@@ -52,12 +52,18 @@ const About = () => {
   ];
 
   const skills = [
-    { name: 'Brand Identity', level: 95 },
-    { name: 'Digital Design', level: 92 },
-    { name: 'Typography', level: 88 },
-    { name: 'UI/UX Design', level: 85 },
-    { name: 'Print Design', level: 90 },
-    { name: 'Motion Graphics', level: 78 },
+    { name: 'React.js', level: 92, icon: '⚛️' },
+    { name: 'JavaScript/TypeScript', level: 90, icon: '🟨' },
+    { name: 'Python', level: 88, icon: '🐍' },
+    { name: 'PostgreSQL', level: 85, icon: '🐘' },
+    { name: 'HTML/CSS', level: 95, icon: '🌐' },
+    { name: 'Node.js', level: 87, icon: '🟢' },
+    { name: 'UI/UX Design', level: 89, icon: '🎨' },
+    { name: 'Graphic Design', level: 91, icon: '✏️' },
+    { name: 'Applied Mathematics', level: 86, icon: '📐' },
+    { name: 'Git & DevOps', level: 84, icon: '📦' },
+    { name: 'REST APIs', level: 88, icon: '🔌' },
+    { name: 'Database Design', level: 83, icon: '🗄️' },
   ];
 
   const containerVariants = {
@@ -251,9 +257,12 @@ const About = () => {
               >
                 <GlassCard className="p-4 lg:p-6 rounded-2xl" hover={false}>
                   <div className="flex justify-between items-center mb-2 lg:mb-3">
-                    <h3 className="text-base lg:text-lg font-bold text-clean">
-                      {skill.name}
-                    </h3>
+                    <div className="flex items-center space-x-3">
+                      <span className="text-2xl">{skill.icon}</span>
+                      <h3 className="text-base lg:text-lg font-bold text-clean">
+                        {skill.name}
+                      </h3>
+                    </div>
                     <span className="text-sm lg:text-base font-semibold text-accent-primary">
                       {skill.level}%
                     </span>

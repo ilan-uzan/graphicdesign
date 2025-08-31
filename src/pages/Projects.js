@@ -61,7 +61,7 @@ const Projects = () => {
             
             {/* Tags */}
             <div className="flex flex-wrap gap-2">
-              {project.tags.slice(0, 3).map((tag, tagIndex) => (
+              {project.tags.slice(0, 4).map((tag, tagIndex) => (
                 <span
                   key={tagIndex}
                   className="px-3 py-1 text-xs font-medium bg-white/[0.04] text-white/80 rounded-full border border-white/[0.06] backdrop-blur-sm"
@@ -69,12 +69,32 @@ const Projects = () => {
                   {tag}
                 </span>
               ))}
-              {project.tags.length > 3 && (
+              {project.tags.length > 4 && (
                 <span className="px-3 py-1 text-xs font-medium bg-accent-primary/12 text-accent-primary rounded-full border border-accent-primary/20">
-                  +{project.tags.length - 3}
+                  +{project.tags.length - 4}
                 </span>
               )}
             </div>
+            
+            {/* Key Features */}
+            {project.features && (
+              <div className="space-y-2">
+                <h4 className="text-sm font-semibold text-white/90">Key Features:</h4>
+                <div className="grid grid-cols-1 gap-1">
+                  {project.features.slice(0, 3).map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center space-x-2">
+                      <span className="text-accent-primary text-xs">•</span>
+                      <span className="text-white/70 text-xs leading-tight">{feature}</span>
+                    </div>
+                  ))}
+                  {project.features.length > 3 && (
+                    <span className="text-accent-primary text-xs ml-4">
+                      +{project.features.length - 3} more features
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
             
             {/* View Project Button */}
             <div className="pt-2">
@@ -103,8 +123,8 @@ const Projects = () => {
             My Projects
           </h1>
           <p className="text-lg lg:text-xl text-white/75 max-w-3xl mx-auto leading-relaxed px-4">
-            A collection of design projects showcasing creativity, innovation, and attention to detail. 
-            Each piece tells a unique story through visual communication.
+            A collection of full-stack engineering projects showcasing technical expertise, innovation, and problem-solving skills. 
+            From cybersecurity tools to fintech platforms, each project demonstrates modern development practices and scalable architecture.
           </p>
         </motion.div>
 

@@ -31,6 +31,7 @@ const Navbar = () => {
       className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${
         scrolled ? 'glass-navbar scale-95' : 'glass-navbar'
       }`}
+      style={{ width: 'fit-content' }}
     >
       <div className="px-8 py-4">
         <div className="flex items-center justify-center">
