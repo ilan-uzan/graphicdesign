@@ -107,11 +107,16 @@ const Navbar = () => {
           <div className="flex items-center space-x-3">
             {/* Mobile Menu Button */}
             <motion.button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 glass-card hover:bg-white/[0.12] transition-all duration-300 rounded-xl"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setMobileMenuOpen(!mobileMenuOpen);
+              }}
+              className="p-2 glass-card hover:bg-white/[0.12] transition-all duration-300 rounded-xl select-none touch-manipulation"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <div className="w-5 h-5 flex flex-col justify-center space-y-1">
                 <motion.span
@@ -189,10 +194,15 @@ const Navbar = () => {
                 >
                   <Link
                     to={item.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`block nav-link text-lg py-2 ${
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`block nav-link text-lg py-2 select-none touch-manipulation ${
                       location.pathname === item.path ? 'active text-clean' : 'text-white/80'
                     }`}
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
                     <motion.span
                       whileHover={{ x: 4 }}
