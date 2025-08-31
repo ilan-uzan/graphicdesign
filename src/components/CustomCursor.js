@@ -4,6 +4,7 @@ import { motion, useSpring, useMotionValue } from 'framer-motion';
 const CustomCursor = ({ mousePosition }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [cursorVariant, setCursorVariant] = useState('default');
+  const [isMobile, setIsMobile] = useState(false);
 
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
@@ -11,6 +12,19 @@ const CustomCursor = ({ mousePosition }) => {
   const springConfig = { damping: 30, stiffness: 400, mass: 0.8 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
+
+  // Detect mobile devices
+  useEffect(() => {
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth <= 768 || 
+                           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      setIsMobile(isMobileDevice);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (mousePosition) {
@@ -98,6 +112,11 @@ const CustomCursor = ({ mousePosition }) => {
       boxShadow: '0 0 15px rgba(0, 122, 255, 0.6)',
     },
   };
+
+  // Don't render cursor on mobile devices
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <>

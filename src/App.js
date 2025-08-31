@@ -36,7 +36,7 @@ function App() {
         <Navbar />
 
         {/* Main Content */}
-        <main className="relative z-10">
+        <main className="relative z-10 min-h-screen">
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<Home mousePosition={mousePosition} />} />
@@ -48,8 +48,8 @@ function App() {
         </main>
 
         {/* Footer */}
-        <footer className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-30">
-          <div className="glass-card px-6 py-3 rounded-2xl">
+        <footer className="relative z-30 mt-20 mb-8">
+          <div className="glass-card px-6 py-3 rounded-2xl max-w-fit mx-auto">
             <p className="text-white/60 text-sm font-medium">
               © 2025 Ilan Uzan. All rights reserved.
             </p>
