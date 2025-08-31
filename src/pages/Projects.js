@@ -24,9 +24,6 @@ const Projects = () => {
     : projects.filter(project => project.tags.includes(filter));
 
   const openProjectModal = (project) => {
-    // Prevent multiple rapid clicks
-    if (isModalOpen) return;
-    
     setSelectedProject(project);
     setIsModalOpen(true);
   };
@@ -37,25 +34,15 @@ const Projects = () => {
   };
 
   const ProjectCard = ({ project, index }) => {
-    const handleCardClick = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      openProjectModal(project);
-    };
-
     return (
       <motion.div
-        className="cursor-pointer select-none touch-manipulation"
-        onClick={handleCardClick}
-        onTouchStart={(e) => e.preventDefault()}
+        className="cursor-pointer"
+        onClick={() => openProjectModal(project)}
         whileHover={{ scale: 1.02, y: -2 }}
         whileTap={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: "easeOut" }}
       >
-        <div 
-          className="h-full overflow-hidden rounded-3xl p-3 sm:p-6 lg:p-8 xl:p-12 backdrop-blur-xl bg-white/[0.015] border border-white/[0.04] relative"
-          style={{ WebkitTapHighlightColor: 'transparent' }}
-        >
+        <div className="h-full overflow-hidden rounded-3xl p-3 sm:p-6 lg:p-8 xl:p-12 backdrop-blur-xl bg-white/[0.015] border border-white/[0.04] relative">
           {/* Project Image */}
           <div className="aspect-[3/2] sm:aspect-[4/3] aspect-[2/1] bg-gradient-to-br from-accent-primary/12 via-accent-secondary/8 to-accent-tertiary/12 relative overflow-hidden rounded-2xl mb-3 sm:mb-6 p-2 sm:p-4">
             {/* Display actual image if available, otherwise show placeholder */}
@@ -176,12 +163,8 @@ const Projects = () => {
           {allTags.map((tag) => (
             <motion.button
               key={tag}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                setFilter(tag);
-              }}
-              className={`px-4 lg:px-6 py-2 lg:py-3 rounded-2xl font-semibold text-sm select-none touch-manipulation ${
+              onClick={() => setFilter(tag)}
+              className={`px-4 lg:px-6 py-2 lg:py-3 rounded-2xl font-semibold text-sm ${
                 filter === tag
                   ? 'button-primary'
                   : 'button-secondary'
@@ -189,7 +172,6 @@ const Projects = () => {
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.15, ease: "easeOut" }}
-              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               {tag}
             </motion.button>

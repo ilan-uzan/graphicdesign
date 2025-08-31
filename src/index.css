@@ -224,28 +224,23 @@
     filter: drop-shadow(0 6px 16px rgba(255, 255, 255, 0.1));
   }
 
-  /* Mobile touch optimizations */
-  @media (max-width: 768px) {
-    .touch-manipulation {
-      touch-action: manipulation;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    
-    .select-none {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-  }
+
   
   .section-spacing {
     @apply pt-24 lg:pt-32 pb-20 lg:pb-28;
+  }
+
+  /* Simple mobile touch improvements */
+  @media (max-width: 768px) {
+    button, a, [role="button"] {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    
+    .cursor-pointer {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
   }
   
   .container-padding {
