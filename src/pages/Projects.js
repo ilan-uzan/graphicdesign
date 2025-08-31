@@ -34,16 +34,19 @@ const Projects = () => {
 
   const ProjectCard = ({ project, index }) => {
     const handleClick = (e) => {
+      openProjectModal(project);
+    };
+
+    const handleTouchEnd = (e) => {
       e.preventDefault();
-      e.stopPropagation();
       openProjectModal(project);
     };
 
     return (
       <div
-        className="cursor-pointer touch-manipulation"
+        className="cursor-pointer"
         onClick={handleClick}
-        onTouchStart={(e) => e.preventDefault()}
+        onTouchEnd={handleTouchEnd}
       >
         <div className="h-full overflow-hidden rounded-3xl p-3 sm:p-6 lg:p-8 xl:p-12 bg-white/[0.015] border border-white/[0.04] relative">
           {/* Project Image */}

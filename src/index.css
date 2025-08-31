@@ -252,18 +252,10 @@
   @media (max-width: 768px) {
     button, a, [role="button"] {
       -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
     }
     
     .cursor-pointer {
       cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-    }
-    
-    /* Ensure touch events work properly */
-    .touch-manipulation {
-      touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
     }
     
@@ -276,14 +268,6 @@
     /* Optimize backdrop filters for mobile */
     .backdrop-blur-xl {
       backdrop-filter: blur(10px) !important;
-    }
-    
-    /* Additional mobile touch optimization for project cards */
-    .cursor-pointer.touch-manipulation {
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      -webkit-user-select: none;
     }
   }
   
