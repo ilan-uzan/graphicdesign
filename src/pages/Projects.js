@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Layers, Search } from 'lucide-react';
 import ProjectModal from '../components/ProjectModal';
 import { projects } from '../data/projects';
@@ -140,12 +139,7 @@ const Projects = () => {
     <div className="min-h-screen section-spacing container-padding">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center mb-12 lg:mb-16"
-        >
+        <div className="text-center mb-12 lg:mb-16">
           <h1 className="page-title mb-4 lg:mb-6">
             My Projects
           </h1>
@@ -153,15 +147,10 @@ const Projects = () => {
             A collection of my real projects showcasing technical expertise across cybersecurity, fintech, AI, and game development. 
             Each project demonstrates practical problem-solving and modern development practices.
           </p>
-        </motion.div>
+        </div>
 
         {/* Filter Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          className="flex flex-wrap justify-center gap-2 lg:gap-3 mb-8 lg:mb-12 px-4"
-        >
+        <div className="flex flex-wrap justify-center gap-2 lg:gap-3 mb-8 lg:mb-12 px-4">
           {allTags.map((tag) => (
             <button
               key={tag}
@@ -175,37 +164,30 @@ const Projects = () => {
               {tag}
             </button>
           ))}
-        </motion.div>
+        </div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {filteredProjects.map((project, index) => (
-            <motion.div
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.4, 
-                delay: index * 0.05,
-                ease: "easeOut"
+              className="opacity-0 animate-fade-in"
+              style={{
+                animationDelay: `${index * 0.1}s`,
+                animationFillMode: 'forwards'
               }}
             >
               <ProjectCard 
                 project={project} 
                 index={index}
               />
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Empty State */}
         {filteredProjects.length === 0 && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-center py-16 lg:py-20"
-          >
+          <div className="text-center py-16 lg:py-20">
             <div className="mb-6 p-6 rounded-3xl bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] inline-block">
               <Search className="w-12 h-12 lg:w-16 lg:h-16 text-white/60 mx-auto" />
             </div>
@@ -213,7 +195,7 @@ const Projects = () => {
             <p className="text-white/60 max-w-md mx-auto px-4">
               Try adjusting your filter or check back later for new projects in this category.
             </p>
-          </motion.div>
+          </div>
         )}
       </div>
 
@@ -225,18 +207,13 @@ const Projects = () => {
       />
 
       {/* Footer - Only visible at bottom of page */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
-        className="mt-32 mb-8 text-center"
-      >
+      <div className="mt-32 mb-8 text-center">
         <div className="glass-card px-6 py-3 rounded-2xl max-w-fit mx-auto">
           <p className="text-white/60 text-sm font-medium">
             © 2025 Ilan Uzan. All rights reserved.
           </p>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

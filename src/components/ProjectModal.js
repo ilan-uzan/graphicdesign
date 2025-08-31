@@ -14,14 +14,13 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   };
 
   const modalVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 50 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
-      scale: 1, 
       y: 0,
-      transition: { type: "spring", stiffness: 300, damping: 30 }
+      transition: { duration: 0.2, ease: "easeOut" }
     },
-    exit: { opacity: 0, scale: 0.8, y: 50 }
+    exit: { opacity: 0, y: 20 }
   };
 
   if (!project) return null;
@@ -34,7 +33,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
           initial="hidden"
           animate="visible"
           exit="hidden"
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-xl bg-black/50"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-sm bg-black/50"
           onClick={onClose}
         >
           <motion.div
