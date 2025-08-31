@@ -106,12 +106,9 @@ const Navbar = () => {
         <div className="px-3 py-2">
           <div className="flex items-center space-x-3">
             {/* Mobile Menu Button */}
-            <motion.button
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 glass-card hover:bg-white/[0.12] transition-all duration-300 rounded-xl"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
+              className="p-2 glass-card hover:bg-white/[0.12] transition-all duration-200 rounded-xl"
             >
               <div className="w-5 h-5 flex flex-col justify-center space-y-1">
                 <motion.span
@@ -133,30 +130,24 @@ const Navbar = () => {
                   className="block w-3/4 h-0.5 bg-white/90 transform origin-center transition-all duration-300 rounded-full"
                 />
               </div>
-            </motion.button>
+            </button>
 
             {/* Social Links */}
             <div className="flex items-center space-x-3">
-              <motion.a
+              <a
                 href="https://www.linkedin.com/in/ilan-uzan-646825204"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 glass-card hover:bg-white/[0.12] transition-all duration-200 rounded-xl"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.15, ease: "easeOut" }}
               >
                 <Linkedin className="w-4 h-4 text-white/90" />
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="https://github.com/ilan-uzan"
                 className="p-2 glass-card hover:bg-white/[0.12] transition-all duration-200 rounded-xl"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.15, ease: "easeOut" }}
               >
                 <Github className="w-4 h-4 text-white/90" />
-              </motion.a>
+              </a>
             </div>
           </div>
         </div>
@@ -166,11 +157,11 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className="lg:hidden liquid-glass mt-3 overflow-hidden rounded-3xl"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="lg:hidden glass-card mt-3 overflow-hidden rounded-3xl"
             style={{ 
               position: 'fixed',
               top: '60px',
@@ -182,9 +173,9 @@ const Navbar = () => {
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.path}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.3 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: index * 0.02, duration: 0.15 }}
                   className="relative"
                 >
                   <Link
@@ -194,18 +185,12 @@ const Navbar = () => {
                       location.pathname === item.path ? 'active text-clean' : 'text-white/80'
                     }`}
                   >
-                    <motion.span
-                      whileHover={{ x: 4 }}
-                      transition={{ duration: 0.15, ease: "easeOut" }}
-                    >
+                    <span>
                       {item.name}
-                    </motion.span>
+                    </span>
                     {location.pathname === item.path && (
-                      <motion.div
-                        layoutId="activeMobileNavItem"
+                      <div
                         className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-5 bg-gradient-to-b from-accent-primary to-accent-secondary rounded-full"
-                        initial={false}
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       />
                     )}
                   </Link>
