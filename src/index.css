@@ -32,13 +32,22 @@
 
 @layer components {
   .glass-card {
-    @apply backdrop-blur-xl bg-white/[0.015] border border-white/[0.04] rounded-3xl relative overflow-hidden;
-    backdrop-filter: blur(40px) saturate(180%) brightness(110%);
+    @apply bg-white/[0.015] border border-white/[0.04] rounded-3xl relative overflow-hidden;
+    backdrop-filter: blur(20px) saturate(150%) brightness(105%);
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.2),
-      0 0 0 1px rgba(255, 255, 255, 0.02),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      0 4px 16px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Mobile optimization - reduce blur effects */
+  @media (max-width: 768px) {
+    .glass-card {
+      backdrop-filter: blur(10px) saturate(120%) brightness(102%);
+      box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.01);
+    }
   }
   
   .glass-card::before {
@@ -63,13 +72,22 @@
   }
 
   .glass-navbar {
-    @apply backdrop-blur-xl bg-white/[0.03] border border-white/[0.08] rounded-3xl relative overflow-hidden;
-    backdrop-filter: blur(60px) saturate(200%) brightness(130%);
+    @apply bg-white/[0.03] border border-white/[0.08] rounded-3xl relative overflow-hidden;
+    backdrop-filter: blur(25px) saturate(150%) brightness(110%);
     box-shadow: 
-      0 16px 48px rgba(0, 0, 0, 0.15),
-      0 0 0 1px rgba(255, 255, 255, 0.06),
-      inset 0 2px 0 rgba(255, 255, 255, 0.12);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      0 8px 24px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Mobile optimization - reduce navbar blur */
+  @media (max-width: 768px) {
+    .glass-navbar {
+      backdrop-filter: blur(15px) saturate(120%) brightness(105%);
+      box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+    }
   }
   
   .gradient-bg {
@@ -240,6 +258,29 @@
     .cursor-pointer {
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Disable complex animations on mobile */
+    .liquid-glass {
+      transform: none !important;
+      transition: none !important;
+    }
+    
+    /* Reduce motion for mobile users */
+    * {
+      animation-duration: 0.1s !important;
+      transition-duration: 0.1s !important;
+    }
+    
+    /* Optimize backdrop filters for mobile */
+    .backdrop-blur-xl {
+      backdrop-filter: blur(10px) !important;
+    }
+    
+    /* Disable 3D transforms on mobile */
+    .perspective-1000 {
+      transform: none !important;
+      perspective: none !important;
     }
   }
   

@@ -24,6 +24,9 @@ const Projects = () => {
     : projects.filter(project => project.tags.includes(filter));
 
   const openProjectModal = (project) => {
+    // Prevent multiple rapid clicks
+    if (isModalOpen) return;
+    
     setSelectedProject(project);
     setIsModalOpen(true);
   };
@@ -38,6 +41,10 @@ const Projects = () => {
       <div
         className="cursor-pointer transform transition-all duration-200 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
         onClick={() => openProjectModal(project)}
+        onTouchStart={(e) => {
+          // Prevent default touch behavior that might interfere
+          e.preventDefault();
+        }}
       >
         <div className="h-full overflow-hidden rounded-3xl p-3 sm:p-6 lg:p-8 xl:p-12 bg-white/[0.015] border border-white/[0.04] relative">
           {/* Project Image */}

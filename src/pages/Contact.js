@@ -143,36 +143,7 @@ const contactMethods = [
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16">
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
-            <div
-              ref={containerRef}
-              className="relative"
-              onMouseMove={handleMouseMove}
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-            >
-              {/* Main Container with Dynamic Transform */}
-              <motion.div
-                className="relative overflow-hidden rounded-3xl"
-                style={{
-                  transform: isHovering 
-                    ? `perspective(1000px) rotateX(${(cursorPosition.y - 50) * 0.05}deg) rotateY(${(cursorPosition.x - 50) * 0.05}deg)`
-                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
-                  transformStyle: 'preserve-3d',
-                }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              >
-                {/* Liquid Distortion Background */}
-                <div 
-                  className="absolute inset-0 opacity-15 pointer-events-none rounded-3xl"
-                  style={{
-                    background: isHovering 
-                      ? `radial-gradient(circle at ${cursorPosition.x}% ${cursorPosition.y}%, rgba(0, 122, 255, 0.08) 0%, rgba(88, 86, 214, 0.04) 30%, transparent 60%)`
-                      : 'transparent',
-                    transition: 'background 0.3s ease-out',
-                  }}
-                />
-                
-                <GlassCard className="card-spacing rounded-3xl liquid-glass relative" hover={false}>
+            <GlassCard className="card-spacing rounded-3xl relative" hover={false}>
                   <h2 className="text-xl lg:text-2xl font-bold text-clean mb-4 lg:mb-6 tracking-tight">
                     Send a Message
                   </h2>
@@ -263,8 +234,6 @@ const contactMethods = [
                   </form>
                 </GlassCard>
               </motion.div>
-            </div>
-          </motion.div>
 
           {/* Contact Methods */}
           <motion.div variants={itemVariants} className="space-y-4 lg:space-y-5">
@@ -315,36 +284,7 @@ const contactMethods = [
 
         {/* Additional Info */}
         <motion.div variants={itemVariants}>
-          <div
-            ref={bottomContainerRef}
-            className="relative"
-            onMouseMove={handleBottomMouseMove}
-            onMouseEnter={() => setIsHoveringBottom(true)}
-            onMouseLeave={() => setIsHoveringBottom(false)}
-          >
-            {/* Main Container with Dynamic Transform */}
-            <motion.div
-              className="relative overflow-hidden rounded-3xl"
-              style={{
-                transform: isHoveringBottom 
-                  ? `perspective(1000px) rotateX(${(bottomCursorPosition.y - 50) * 0.05}deg) rotateY(${(bottomCursorPosition.x - 50) * 0.05}deg)`
-                  : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
-                transformStyle: 'preserve-3d',
-              }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              {/* Liquid Distortion Background */}
-              <div 
-                className="absolute inset-0 opacity-15 pointer-events-none rounded-3xl"
-                style={{
-                  background: isHoveringBottom 
-                    ? `radial-gradient(circle at ${bottomCursorPosition.x}% ${bottomCursorPosition.y}%, rgba(0, 122, 255, 0.08) 0%, rgba(88, 86, 214, 0.04) 30%, transparent 60%)`
-                    : 'transparent',
-                  transition: 'background 0.3s ease-out',
-                }}
-              />
-              
-              <GlassCard className="text-center p-6 lg:p-8 rounded-3xl liquid-glass relative">
+          <GlassCard className="text-center p-6 lg:p-8 rounded-3xl relative">
                 <h3 className="text-lg lg:text-xl font-bold text-clean mb-3 lg:mb-4">
                   Let's Create Something Amazing
                 </h3>
@@ -353,8 +293,6 @@ const contactMethods = [
                 </p>
               </GlassCard>
             </motion.div>
-          </div>
-        </motion.div>
 
         {/* Footer - Only visible at bottom of page */}
         <motion.div

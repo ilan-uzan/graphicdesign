@@ -106,36 +106,7 @@ const About = () => {
 
         {/* Personal Story */}
         <motion.div variants={itemVariants} className="mb-16 lg:mb-20">
-          <div
-            ref={containerRef}
-            className="relative"
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-          >
-            {/* Main Container with Dynamic Transform */}
-            <motion.div
-              className="relative overflow-hidden rounded-3xl"
-              style={{
-                transform: isHovering 
-                  ? `perspective(1000px) rotateX(${(cursorPosition.y - 50) * 0.05}deg) rotateY(${(cursorPosition.x - 50) * 0.05}deg)`
-                  : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
-                transformStyle: 'preserve-3d',
-              }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              {/* Liquid Distortion Background */}
-              <div 
-                className="absolute inset-0 opacity-15 pointer-events-none rounded-3xl"
-                style={{
-                  background: isHovering 
-                    ? `radial-gradient(circle at ${cursorPosition.x}% ${cursorPosition.y}%, rgba(0, 122, 255, 0.08) 0%, rgba(88, 86, 214, 0.04) 30%, transparent 60%)`
-                    : 'transparent',
-                  transition: 'background 0.3s ease-out',
-                }}
-              />
-              
-              <GlassCard className="card-spacing rounded-3xl liquid-glass relative" hover={false}>
+          <GlassCard className="card-spacing rounded-3xl relative" hover={false}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
                   <div>
                     <h2 className="text-2xl lg:text-3xl font-bold text-clean mb-4 lg:mb-6 tracking-tight">
@@ -191,8 +162,6 @@ const About = () => {
                 </div>
               </GlassCard>
             </motion.div>
-          </div>
-        </motion.div>
 
         {/* Timeline */}
         <motion.div variants={itemVariants} className="mb-16 lg:mb-20">
