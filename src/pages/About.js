@@ -1,22 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Palette } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 import profileImage from '../assets/images/profile.jpg';
 
 const About = () => {
-  const [isHovering, setIsHovering] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      setCursorPosition({ x, y });
-    }
-  };
 
   const timeline = [
     // {

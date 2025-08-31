@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
@@ -162,6 +162,7 @@ const Home = ({ mousePosition }) => {
                       </motion.button>
                     </Link>
                   </motion.div>
+                </motion.div>
             </GlassCard>
           </div>
         </motion.div>

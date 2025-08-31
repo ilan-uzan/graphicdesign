@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import GlassCard from '../components/GlassCard';
 
@@ -17,33 +17,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  // Liquid glass effect states
-  const [isHovering, setIsHovering] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
-  
-  // Bottom container liquid glass effect states
-  const [isHoveringBottom, setIsHoveringBottom] = useState(false);
-  const [bottomCursorPosition, setBottomCursorPosition] = useState({ x: 0, y: 0 });
-  const bottomContainerRef = useRef(null);
 
-  const handleMouseMove = (e) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      setCursorPosition({ x, y });
-    }
-  };
-
-  const handleBottomMouseMove = (e) => {
-    if (bottomContainerRef.current) {
-      const rect = bottomContainerRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      setBottomCursorPosition({ x, y });
-    }
-  };
 
   const handleInputChange = (e) => {
     setFormData({
