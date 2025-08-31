@@ -35,14 +35,11 @@ const Projects = () => {
 
   const ProjectCard = ({ project, index }) => {
     return (
-      <motion.div
-        className="cursor-pointer"
+      <div
+        className="cursor-pointer transform transition-all duration-200 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
         onClick={() => openProjectModal(project)}
-        whileHover={{ scale: 1.02, y: -2 }}
-        whileTap={{ scale: 0.98 }}
-        transition={{ duration: 0.15, ease: "easeOut" }}
       >
-        <div className="h-full overflow-hidden rounded-3xl p-3 sm:p-6 lg:p-8 xl:p-12 backdrop-blur-xl bg-white/[0.015] border border-white/[0.04] relative">
+        <div className="h-full overflow-hidden rounded-3xl p-3 sm:p-6 lg:p-8 xl:p-12 bg-white/[0.015] border border-white/[0.04] relative">
           {/* Project Image */}
           <div className="aspect-[3/2] sm:aspect-[4/3] aspect-[2/1] bg-gradient-to-br from-accent-primary/12 via-accent-secondary/8 to-accent-tertiary/12 relative overflow-hidden rounded-2xl mb-3 sm:mb-6 p-2 sm:p-4">
             {/* Display actual image if available, otherwise show placeholder */}
@@ -54,6 +51,7 @@ const Projects = () => {
                      project.image === 'kesefpluslogo.png' ? kesefPlusImg : project.image}
                 alt={project.title}
                 className="w-full h-full object-contain"
+                loading="lazy"
               />
             ) : (
               <>
@@ -130,7 +128,7 @@ const Projects = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     );
   };
 
@@ -161,39 +159,38 @@ const Projects = () => {
           className="flex flex-wrap justify-center gap-2 lg:gap-3 mb-8 lg:mb-12 px-4"
         >
           {allTags.map((tag) => (
-            <motion.button
+            <button
               key={tag}
               onClick={() => setFilter(tag)}
-              className={`px-4 lg:px-6 py-2 lg:py-3 rounded-2xl font-semibold text-sm ${
+              className={`px-4 lg:px-6 py-2 lg:py-3 rounded-2xl font-semibold text-sm transform transition-all duration-200 hover:scale-105 hover:-translate-y-1 active:scale-98 ${
                 filter === tag
                   ? 'button-primary'
                   : 'button-secondary'
               }`}
-              whileHover={{ scale: 1.05, y: -1 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
             >
               {tag}
-            </motion.button>
+            </button>
           ))}
         </motion.div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {filteredProjects.map((project, index) => (
-            <div
+            <motion.div
               key={project.id}
-              className="opacity-0 animate-fade-in"
-              style={{
-                animationDelay: `${index * 0.1}s`,
-                animationFillMode: 'forwards'
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.4, 
+                delay: index * 0.05,
+                ease: "easeOut"
               }}
             >
               <ProjectCard 
                 project={project} 
                 index={index}
               />
-            </div>
+            </motion.div>
           ))}
         </div>
 

@@ -311,9 +311,7 @@
     transform: translateY(-4px) scale(1.02);
   }
 
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-  }
+
 
   .floating-element {
     animation: float 8s ease-in-out infinite;
@@ -396,7 +394,4 @@
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-} 
+ 
