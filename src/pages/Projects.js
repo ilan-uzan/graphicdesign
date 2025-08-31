@@ -23,9 +23,6 @@ const Projects = () => {
     : projects.filter(project => project.tags.includes(filter));
 
   const openProjectModal = (project) => {
-    // Prevent multiple rapid clicks
-    if (isModalOpen) return;
-    
     setSelectedProject(project);
     setIsModalOpen(true);
   };
@@ -38,9 +35,8 @@ const Projects = () => {
   const ProjectCard = ({ project, index }) => {
     return (
       <div
-        className="cursor-pointer transform transition-all duration-200 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
+        className="cursor-pointer"
         onClick={() => openProjectModal(project)}
-
       >
         <div className="h-full overflow-hidden rounded-3xl p-3 sm:p-6 lg:p-8 xl:p-12 bg-white/[0.015] border border-white/[0.04] relative">
           {/* Project Image */}
@@ -70,8 +66,7 @@ const Projects = () => {
               </>
             )}
             
-            {/* Hover Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+
           </div>
           
           {/* Project Info */}
@@ -90,7 +85,7 @@ const Projects = () => {
               {project.tags.slice(0, 4).map((tag, tagIndex) => (
                 <span
                   key={tagIndex}
-                  className="px-3 py-1 text-xs font-medium bg-white/[0.04] text-white/80 rounded-full border border-white/[0.06] backdrop-blur-sm"
+                  className="px-3 py-1 text-xs font-medium bg-white/[0.04] text-white/80 rounded-full border border-white/[0.06]"
                 >
                   {tag}
                 </span>
@@ -173,7 +168,7 @@ const Projects = () => {
               key={project.id}
               className="opacity-0 animate-fade-in"
               style={{
-                animationDelay: `${index * 0.1}s`,
+                animationDelay: `${index * 0.05}s`,
                 animationFillMode: 'forwards'
               }}
             >
@@ -188,7 +183,7 @@ const Projects = () => {
         {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-16 lg:py-20">
-            <div className="mb-6 p-6 rounded-3xl bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] inline-block">
+            <div className="mb-6 p-6 rounded-3xl bg-white/[0.05] border border-white/[0.1] inline-block">
               <Search className="w-12 h-12 lg:w-16 lg:h-16 text-white/60 mx-auto" />
             </div>
             <h3 className="text-xl lg:text-2xl font-bold text-white/80 mb-3 lg:mb-4">No projects found</h3>

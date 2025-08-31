@@ -14,13 +14,12 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   };
 
   const modalVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0 },
     visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.2, ease: "easeOut" }
+      opacity: 1,
+      transition: { duration: 0.15, ease: "easeOut" }
     },
-    exit: { opacity: 0, y: 20 }
+    exit: { opacity: 0 }
   };
 
   if (!project) return null;
@@ -47,7 +46,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 w-10 h-10 glass-card hover:bg-white/20 transition-all duration-300 flex items-center justify-center"
+              className="absolute top-4 right-4 z-10 w-10 h-10 glass-card hover:bg-white/20 transition-colors duration-200 flex items-center justify-center"
             >
               <span className="text-white text-xl">×</span>
             </button>
@@ -121,7 +120,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-2 button-glow glass-card px-6 py-3 text-white hover:bg-white/20 transition-all duration-300"
+                      className="inline-flex items-center space-x-2 button-glow glass-card px-6 py-3 text-white hover:bg-white/20 transition-colors duration-200"
                     >
                       <span>View Project</span>
                       <span>→</span>
