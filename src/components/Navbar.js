@@ -44,7 +44,7 @@ const Navbar = () => {
                 className="relative"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
               >
                 <Link
                   to={item.path}
@@ -141,19 +141,19 @@ const Navbar = () => {
                 href="https://www.linkedin.com/in/ilan-uzan-646825204"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 glass-card hover:bg-white/[0.12] transition-all duration-300 rounded-xl"
+                className="p-2 glass-card hover:bg-white/[0.12] transition-all duration-200 rounded-xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
               >
                 <Linkedin className="w-4 h-4 text-white/90" />
               </motion.a>
               <motion.a
                 href="https://github.com/ilan-uzan"
-                className="p-2 glass-card hover:bg-white/[0.12] transition-all duration-300 rounded-xl"
+                className="p-2 glass-card hover:bg-white/[0.12] transition-all duration-200 rounded-xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}
               >
                 <Github className="w-4 h-4 text-white/90" />
               </motion.a>
@@ -196,7 +196,7 @@ const Navbar = () => {
                   >
                     <motion.span
                       whileHover={{ x: 4 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.15, ease: "easeOut" }}
                     >
                       {item.name}
                     </motion.span>

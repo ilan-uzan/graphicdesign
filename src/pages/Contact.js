@@ -246,7 +246,7 @@ const contactMethods = [
                       className="w-full button-primary px-6 py-4 rounded-2xl font-bold disabled:opacity-50 disabled:cursor-not-allowed"
                       whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                       whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.15, ease: "easeOut" }}
                     >
                       {isSubmitting ? (
                         <span className="flex items-center justify-center space-x-2">
@@ -283,7 +283,7 @@ const contactMethods = [
                   variants={itemVariants}
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.15, ease: "easeOut" }}
                   className="block"
                 >
                   <GlassCard className="p-4 lg:p-5 cursor-pointer rounded-2xl glass-card" hover={false}>

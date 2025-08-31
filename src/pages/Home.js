@@ -193,98 +193,68 @@ const Home = ({ mousePosition }) => {
                     variants={itemVariants}
                     className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
                   >
-                    <Link to="/projects">
-                      <div
+                    <Link to="/projects" className="block">
+                      <motion.button
                         ref={button1Ref}
-                        className="relative"
+                        className="button-primary px-10 py-4 rounded-2xl min-w-[200px] font-bold text-base relative overflow-hidden"
                         onMouseMove={handleButton1MouseMove}
                         onMouseEnter={() => setIsHoveringButton1(true)}
                         onMouseLeave={() => setIsHoveringButton1(false)}
+                        whileHover={{ 
+                          scale: 1.02, 
+                          y: -2,
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ duration: 0.15, ease: "easeOut" }}
                       >
-                        <motion.div
-                          className="relative overflow-hidden rounded-2xl"
+                        {/* Liquid Distortion Background for Button 1 */}
+                        <div 
+                          className="absolute inset-0 opacity-20 pointer-events-none rounded-2xl"
                           style={{
-                            transform: isHoveringButton1 
-                              ? `perspective(1000px) rotateX(${(button1CursorPosition.y - 50) * 0.08}deg) rotateY(${(button1CursorPosition.x - 50) * 0.08}deg)`
-                              : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
-                            transformStyle: 'preserve-3d',
+                            background: isHoveringButton1 
+                              ? `radial-gradient(circle at ${button1CursorPosition.x}% ${button1CursorPosition.y}%, rgba(0, 122, 255, 0.12) 0%, rgba(88, 86, 214, 0.06) 40%, transparent 70%)`
+                              : 'transparent',
+                            transition: 'background 0.2s ease-out',
                           }}
-                          transition={{ duration: 0.3, ease: "easeOut" }}
-                        >
-                          {/* Liquid Distortion Background for Button 1 */}
-                          <div 
-                            className="absolute inset-0 opacity-20 pointer-events-none rounded-2xl"
-                            style={{
-                              background: isHoveringButton1 
-                                ? `radial-gradient(circle at ${button1CursorPosition.x}% ${button1CursorPosition.y}%, rgba(0, 122, 255, 0.12) 0%, rgba(88, 86, 214, 0.06) 40%, transparent 70%)`
-                                : 'transparent',
-                              transition: 'background 0.3s ease-out',
-                            }}
-                          />
-                          
-                          <motion.button
-                            className="button-primary px-10 py-4 rounded-2xl min-w-[200px] font-bold text-base relative"
-                            whileHover={{ 
-                              scale: 1.02, 
-                              y: -2,
-                            }}
-                            whileTap={{ scale: 0.98 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <span className="flex items-center justify-center space-x-2">
-                              <span>View My Work</span>
-                              <ArrowRight className="w-4 h-4" />
-                            </span>
-                          </motion.button>
-                        </motion.div>
-                      </div>
+                        />
+                        
+                        <span className="flex items-center justify-center space-x-2 relative z-10">
+                          <span>View My Work</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </motion.button>
                     </Link>
 
-                    <Link to="/about">
-                      <div
+                    <Link to="/about" className="block">
+                      <motion.button
                         ref={button2Ref}
-                        className="relative"
+                        className="button-secondary px-10 py-4 rounded-2xl min-w-[200px] font-bold text-base relative overflow-hidden"
                         onMouseMove={handleButton2MouseMove}
                         onMouseEnter={() => setIsHoveringButton2(true)}
                         onMouseLeave={() => setIsHoveringButton2(false)}
+                        whileHover={{ 
+                          scale: 1.02, 
+                          y: -2,
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ duration: 0.15, ease: "easeOut" }}
                       >
-                        <motion.div
-                          className="relative overflow-hidden rounded-2xl"
+                        {/* Liquid Distortion Background for Button 2 */}
+                        <div 
+                          className="absolute inset-0 opacity-20 pointer-events-none rounded-2xl"
                           style={{
-                            transform: isHoveringButton2 
-                              ? `perspective(1000px) rotateX(${(button2CursorPosition.y - 50) * 0.08}deg) rotateY(${(button2CursorPosition.x - 50) * 0.08}deg)`
-                              : 'perspective(1000px) rotateX(0deg) rotateY(0deg)',
-                            transformStyle: 'preserve-3d',
+                            background: isHoveringButton2 
+                              ? `radial-gradient(circle at ${button2CursorPosition.x}% ${button2CursorPosition.y}%, rgba(175, 82, 222, 0.12) 0%, rgba(88, 86, 214, 0.06) 40%, transparent 70%)`
+                              : 'transparent',
+                            transition: 'background 0.2s ease-out',
                           }}
-                          transition={{ duration: 0.3, ease: "easeOut" }}
-                        >
-                          {/* Liquid Distortion Background for Button 2 */}
-                          <div 
-                            className="absolute inset-0 opacity-20 pointer-events-none rounded-2xl"
-                            style={{
-                              background: isHoveringButton2 
-                                ? `radial-gradient(circle at ${button2CursorPosition.x}% ${button2CursorPosition.y}%, rgba(175, 82, 222, 0.12) 0%, rgba(88, 86, 214, 0.06) 40%, transparent 70%)`
-                                : 'transparent',
-                              transition: 'background 0.3s ease-out',
-                            }}
-                          />
-                          
-                          <motion.button
-                            className="button-secondary px-10 py-4 rounded-2xl min-w-[200px] font-bold text-base relative"
-                            whileHover={{ 
-                              scale: 1.02, 
-                              y: -2,
-                            }}
-                            whileTap={{ scale: 0.98 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <span className="flex items-center justify-center space-x-2">
-                              <span>About Me</span>
-                              <Sparkles className="w-4 h-4" />
-                            </span>
-                          </motion.button>
-                        </motion.div>
-                      </div>
+                        />
+                        
+                        <span className="flex items-center justify-center space-x-2 relative z-10">
+                          <span>About Me</span>
+                          <Sparkles className="w-4 h-4" />
+                        </span>
+                      </motion.button>
                     </Link>
                   </motion.div>
                 </motion.div>

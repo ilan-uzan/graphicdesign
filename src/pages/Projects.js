@@ -35,9 +35,12 @@ const Projects = () => {
 
   const ProjectCard = ({ project, index }) => {
     return (
-      <div
-        className="cursor-pointer transform transition-all duration-300 ease-out hover:scale-[1.02] hover:-translate-y-1"
+      <motion.div
+        className="cursor-pointer"
         onClick={() => openProjectModal(project)}
+        whileHover={{ scale: 1.02, y: -2 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ duration: 0.15, ease: "easeOut" }}
       >
         <div className="h-full overflow-hidden rounded-3xl p-3 sm:p-6 lg:p-8 xl:p-12 backdrop-blur-xl bg-white/[0.015] border border-white/[0.04] relative">
           {/* Project Image */}
@@ -127,7 +130,7 @@ const Projects = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   };
 
@@ -158,17 +161,20 @@ const Projects = () => {
           className="flex flex-wrap justify-center gap-2 lg:gap-3 mb-8 lg:mb-12 px-4"
         >
           {allTags.map((tag) => (
-            <button
+            <motion.button
               key={tag}
               onClick={() => setFilter(tag)}
-              className={`px-4 lg:px-6 py-2 lg:py-3 rounded-2xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 ${
+              className={`px-4 lg:px-6 py-2 lg:py-3 rounded-2xl font-semibold text-sm ${
                 filter === tag
                   ? 'button-primary'
                   : 'button-secondary'
               }`}
+              whileHover={{ scale: 1.05, y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
             >
               {tag}
-            </button>
+            </motion.button>
           ))}
         </motion.div>
 
