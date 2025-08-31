@@ -37,13 +37,13 @@ export const projects = [
   {
     id: 3,
     title: "🤖 CeeVee AI - AI-Powered CV Generator",
-    description: "Build the perfect CV in minutes with AI. A smart CV and motivation letter generator powered by GPT-4, featuring real-time preview, modern glassmorphism UI, and professional PDF export capabilities.",
-    tags: ["Next.js", "TypeScript", "AI/ML", "GPT-4", "Firebase", "CV Generator"],
-    tools: ["Next.js 14", "TypeScript", "Tailwind CSS", "Firebase Auth", "Firestore", "OpenAI GPT-4", "jsPDF", "html2canvas"],
+    description: "Build the perfect CV in minutes with AI. A smart CV and motivation letter generator powered by Google Gemini, featuring real-time preview, modern glassmorphism UI, and professional PDF export capabilities.",
+    tags: ["Next.js", "TypeScript", "AI/ML", "Google Gemini", "Firebase", "CV Generator"],
+    tools: ["Next.js 14", "TypeScript", "Tailwind CSS", "Firebase Auth", "Firestore", "Google Gemini AI", "jsPDF", "html2canvas"],
     image: "ceevee.png",
     link: "https://github.com/ilan-uzan/ceevee-ai",
     features: [
-      "GPT-4 powered CV generation",
+      "Google Gemini powered CV generation",
       "Real-time preview updates",
       "Beautiful glassmorphism design",
       "Pre-built job role templates",

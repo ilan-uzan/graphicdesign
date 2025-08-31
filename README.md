@@ -30,7 +30,7 @@ A stunning, modern portfolio website built with React and Tailwind CSS, showcasi
 ### 🚀 Real Projects Showcased
 - **🛡️ Sentinel**: Advanced cybersecurity monitoring tool with Python, FastAPI, PostgreSQL
 - **🚀 Kesef Plus**: Next-generation fintech platform with React Native, Node.js, Supabase
-- **🤖 CeeVee AI**: AI-powered CV generator with Next.js, TypeScript, OpenAI GPT-4
+- **🤖 CeeVee AI**: AI-powered CV generator with Next.js, TypeScript, Google Gemini
 - **🎮 Galactic Defenders**: Retro arcade game with Python, Tkinter, SQLite
 
 ## 🚀 Getting Started
