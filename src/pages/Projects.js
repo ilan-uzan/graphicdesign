@@ -33,19 +33,33 @@ const Projects = () => {
   };
 
   const ProjectCard = ({ project, index }) => {
+    const [touchStarted, setTouchStarted] = useState(false);
+
     const handleClick = (e) => {
-      openProjectModal(project);
+      // Only handle click if it wasn't triggered by touch
+      if (!touchStarted) {
+        openProjectModal(project);
+      }
+    };
+
+    const handleTouchStart = (e) => {
+      setTouchStarted(true);
     };
 
     const handleTouchEnd = (e) => {
       e.preventDefault();
+      e.stopPropagation();
       openProjectModal(project);
+      
+      // Reset touch state after a brief delay to allow proper event handling
+      setTimeout(() => setTouchStarted(false), 300);
     };
 
     return (
       <div
         className="cursor-pointer"
         onClick={handleClick}
+        onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
         <div className="h-full overflow-hidden rounded-3xl p-3 sm:p-6 lg:p-8 xl:p-12 bg-white/[0.015] border border-white/[0.04] relative">
