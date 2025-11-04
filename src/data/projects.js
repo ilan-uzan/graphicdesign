@@ -24,7 +24,7 @@ export const projects = [
     tags: ["React Native", "Node.js", "Supabase", "Fintech", "AI", "Web3"],
     tools: ["React Native (Expo)", "Tailwind-RN", "Node.js", "Express", "Supabase", "PostgreSQL", "Plaid", "Stripe", "OpenAI", "OneSignal"],
     image: "kesefpluslogo.png",
-    link: "https://kesefplus.com",
+    link: "https://kesefplus.app",
     features: [
       "Glassmorphism Apple-style design",
       "AI-powered financial automation",
