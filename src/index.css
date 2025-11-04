@@ -252,11 +252,13 @@
   @media (max-width: 768px) {
     button, a, [role="button"] {
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     
     .cursor-pointer {
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     
     /* Disable complex animations that interfere with touch */
@@ -268,6 +270,11 @@
     /* Optimize backdrop filters for mobile */
     .backdrop-blur-xl {
       backdrop-filter: blur(10px) !important;
+    }
+    
+    /* Prevent double-tap zoom and improve touch responsiveness */
+    * {
+      touch-action: manipulation;
     }
   }
   
